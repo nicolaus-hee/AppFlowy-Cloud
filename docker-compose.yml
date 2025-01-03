@@ -76,7 +76,7 @@ services:
       - GOTRUE_DB_DRIVER=postgres
       - API_EXTERNAL_URL=${API_EXTERNAL_URL}
       - DATABASE_URL=${GOTRUE_DATABASE_URL}
-      - PORT=9999
+      - PORT=${APPFLOWY_GOTRUE_PORT}
       - GOTRUE_SMTP_HOST=${GOTRUE_SMTP_HOST}                          # e.g. smtp.gmail.com
       - GOTRUE_SMTP_PORT=${GOTRUE_SMTP_PORT}                          # e.g. 465
       - GOTRUE_SMTP_USER=${GOTRUE_SMTP_USER}                          # email sender, e.g. noreply@appflowy.io
@@ -173,7 +173,7 @@ services:
     environment:
       - RUST_LOG=${RUST_LOG:-info}
       - APPFLOWY_ENVIRONMENT=production
-      - APPFLOWY_WORKER_REDIS_URL=redis://redis:6379
+      - APPFLOWY_WORKER_REDIS_URL=redis://${REDIS_HOST}:${REDIS_PORT}
       - APPFLOWY_WORKER_ENVIRONMENT=production
       - APPFLOWY_WORKER_DATABASE_URL=${APPFLOWY_WORKER_DATABASE_URL}
       - APPFLOWY_WORKER_IMPORT_TICK_INTERVAL=30
